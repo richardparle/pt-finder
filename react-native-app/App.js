@@ -1,6 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { useEffect, useState } from "react";
+import { collection, getDocs, waitForPendingWrites } from "firebase/firestore";
+import { StyleSheet, Text, View } from "react-native";
+import { db } from "./src/firebase";
 
 export default function App() {
   return (
@@ -14,8 +17,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
