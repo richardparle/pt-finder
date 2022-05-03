@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, waitForPendingWrites } from "firebase/firestore";
 import { StyleSheet, Text, View } from "react-native";
 import { db } from "./src/firebase";
 
@@ -32,7 +32,6 @@ export default function App() {
         })}
       </ul>
       <StatusBar style="auto" />
-      <TestDataPush />
     </View>
   );
 }
