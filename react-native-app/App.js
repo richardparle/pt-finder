@@ -32,6 +32,7 @@ export default function App() {
         })}
       </ul>
       <StatusBar style="auto" />
+      <TestDataPush />
     </View>
   );
 }
