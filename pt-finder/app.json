@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "pt-finder",
+    "slug": "pt-finder",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "pt-finder"
+}
