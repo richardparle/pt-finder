@@ -5,6 +5,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  CheckBox,
 } from "react-native";
 import React, { useState } from "react";
 import { auth } from "../firebase";
@@ -17,6 +18,7 @@ const RegisterScreen = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [postcode, setPostcode] = useState("");
+  const [isPersonalTrainer, setisPersonalTrainer] = useState(false);
 
   const handleSignup = async () => {
     // const signupValidation = () => {
@@ -31,16 +33,25 @@ const RegisterScreen = ({ navigation }) => {
 
     try {
       const user = await createUserWithEmailAndPassword(auth, email, password);
-      const UserDetails = await addDoc(collection(db, "users"), {
-        email,
-        postcode,
-        username,
-      });
-      console.log("USERDETAILS", UserDetails.id);
-      alert("Registration complete");
-
-      navigation.navigate("Dashboard");
-      //navigation.navigate("Dashboard", { setUserDocRef: setUserDocRef });
+      if (!isPersonalTrainer) {
+        const UserDetails = await addDoc(collection(db, "users"), {
+          email,
+          postcode,
+          username,
+        });
+        console.log("USERDETAILS", UserDetails.id);
+        alert("Registration complete");
+        navigation.navigate("Dashboard");
+      } else {
+        const PTDetails = await addDoc(collection(db, "Personal Trainers"), {
+          email,
+          postcode,
+          username,
+        });
+        console.log("PTDETAILS", PTDetails.id);
+        navigation.navigate("Dashboard");
+        alert("Registration complete");
+      }
     } catch (err) {
       alert(err.message);
     }
@@ -79,13 +90,19 @@ const RegisterScreen = ({ navigation }) => {
           onChangeText={(text) => setPostcode(text)}
           style={styles.input}
         />
+        <CheckBox
+          value={isPersonalTrainer}
+          onValueChange={setisPersonalTrainer}
+          style={styles.checkbox}
+        />
+        <Text>Check this box if you are a personal trainer</Text>
       </View>
-
       <View style={styles.buttonContainer}>
         <TouchableOpacity onPress={handleSignup} style={styles.button}>
           <Text style={styles.buttonOutlineText}>Register</Text>
         </TouchableOpacity>
       </View>
+      <Text>Is personal trainer: {isPersonalTrainer ? "YES" : "NO"}</Text>
     </KeyboardAvoidingView>
   );
 };
@@ -121,6 +138,16 @@ const styles = StyleSheet.create({
   },
   buttonText: { color: "white", fontWeight: "700", fontSize: 16 },
   buttonOutlineText: { color: "white", fontWeight: "700", fontSize: 16 },
+  checkboxContainer: {
+    flexDirection: "row",
+    marginBottom: 20,
+  },
+  checkbox: {
+    alignSelf: "center",
+  },
+  label: {
+    margin: 8,
+  },
 });
 
 export default RegisterScreen;
