@@ -5,6 +5,9 @@ import LoginScreen from "./src/screens/LoginScreen";
 import RegisterScreen from "./src/screens/RegisterScreen";
 import Dashboard from "./src/screens/Dashboard";
 import { useState } from "react";
+import ClientProfilePage from "./src/screens/ClientProfilePage";
+import { useState } from "react";
+import SearchGymsPage from "./src/screens/SearchGymsPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +22,8 @@ export default function App() {
         />
         <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
         <Stack.Screen name="Dashboard" component={Dashboard} />
+        <Stack.Screen name="ClientProfile" component={ClientProfilePage} />
+        <Stack.Screen name="SearchGyms" component={SearchGymsPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
