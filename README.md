@@ -2,8 +2,11 @@
 
 To run this project:
 
+cd react-native-app
 npm install
-npm start
+npm i @react-navigation/native-stack
+npm i @react-navigation/native
+npm start (expo start)
 
 Troubleshooting:
 node -v (needs to be version 16)
