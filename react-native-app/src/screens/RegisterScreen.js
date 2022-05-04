@@ -9,6 +9,17 @@ import {
 import React, { useState } from "react";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { db } from "../firebase";
+import { collection, addDoc } from "firebase/firestore";
+
+// const TestDataPush = () => {
+//   addDoc(collection(db, "users"), {
+//     location: "mars",
+//     username: "greenman",
+//     address: "third crater from right",
+//   }).then((docRef) => {
+//     console.log("REF:", docRef.id);
+//   });
 
 const RegisterScreen = () => {
   const [email, setEmail] = useState("");
@@ -17,6 +28,16 @@ const RegisterScreen = () => {
   const [postcode, setPostcode] = useState("");
 
   const handleSignup = async () => {
+    // const signupValidation = () => {
+    //   let isValid = true;
+    //   if (!username.match("^.{8,}$")) {
+    //     isValid = false;
+    //     console.log("username", isValid);
+    //     alert("username not long enough - 8 chars at least needed");
+    //   }
+    // };
+    /////Need to stop further processing if validation fails
+
     try {
       const user = await createUserWithEmailAndPassword(
         auth,
@@ -25,6 +46,13 @@ const RegisterScreen = () => {
         postcode,
         username
       );
+      const SubmitUserDetails = await addDoc(collection(db, "users"), {
+        email,
+        postcode,
+        username,
+      });
+      alert("Registration complete");
+      navigation.navigate("Dashboard");
     } catch (err) {
       alert(err.message);
     }
@@ -38,6 +66,11 @@ const RegisterScreen = () => {
           value={username}
           onChangeText={(text) => setUsername(text)}
           style={styles.input}
+          pattern={[
+            "^.{8,}$", // min 8 chars
+            "(?=.*\\d)", // number required
+            "(?=.*[A-Z])", // uppercase letter
+          ]}
         />
         <TextInput
           placeholder="Email"
@@ -50,6 +83,7 @@ const RegisterScreen = () => {
           value={password}
           onChangeText={(text) => setPassword(text)}
           style={styles.input}
+          secureTextEntry={true}
         />
         <TextInput
           placeholder="Postcode"
