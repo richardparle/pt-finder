@@ -1,5 +1,12 @@
-const Dashboard = ({ user }) => {
-  return <h1>Welcome {user}</h1>;
+import LogOutBtn from "../components/LogOutBtn";
+const Dashboard = () => {
+  return (
+    <div>
+      <h1>Welcome</h1>
+      <br></br>
+      <LogOutBtn />
+    </div>
+  );
 };
 
 export default Dashboard;
