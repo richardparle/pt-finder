@@ -12,16 +12,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 
-// const TestDataPush = () => {
-//   addDoc(collection(db, "users"), {
-//     location: "mars",
-//     username: "greenman",
-//     address: "third crater from right",
-//   }).then((docRef) => {
-//     console.log("REF:", docRef.id);
-//   });
-
-const RegisterScreen = () => {
+const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -39,20 +30,17 @@ const RegisterScreen = () => {
     /////Need to stop further processing if validation fails
 
     try {
-      const user = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password,
-        postcode,
-        username
-      );
-      const SubmitUserDetails = await addDoc(collection(db, "users"), {
+      const user = await createUserWithEmailAndPassword(auth, email, password);
+      const UserDetails = await addDoc(collection(db, "users"), {
         email,
         postcode,
         username,
       });
+      console.log("USERDETAILS", UserDetails.id);
       alert("Registration complete");
+
       navigation.navigate("Dashboard");
+      //navigation.navigate("Dashboard", { setUserDocRef: setUserDocRef });
     } catch (err) {
       alert(err.message);
     }
