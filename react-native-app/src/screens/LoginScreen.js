@@ -9,30 +9,32 @@ import {
 import React, { useState, useEffect } from "react";
 import { auth } from "../firebase";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
-import LogOutBtn from "../components/LogOutBtn";
 
 const LoginScreen = ({ navigation }) => {
+  const [user, setUser] = useState({});
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   const handleLogin = (e) => {
     e.preventDefault();
     try {
-      signInWithEmailAndPassword(auth, email, password).then(
-        navigation.navigate("Dashboard")
-      );
+      signInWithEmailAndPassword(auth, email, password);
     } catch (err) {
       alert(err.message);
     }
   };
 
   useEffect(() => {
-    onAuthStateChanged(auth, (currUser) => {
-      setUser(currUser);
+    const unsubscribe = auth.onAuthStateChanged((currUser) => {
+      if (currUser) {
+        setUser(currUser);
+        navigation.navigate("Dashboard");
+      }
       setIsLoading(false);
     });
+    return unsubscribe;
   }, []);
 
   if (isLoading) return <h1>Loading...</h1>;
@@ -67,7 +69,6 @@ const LoginScreen = ({ navigation }) => {
         >
           <Text style={styles.buttonOutlineText}>Register</Text>
         </TouchableOpacity>
-        <LogOutBtn user={user} />
       </View>
     </KeyboardAvoidingView>
   );
