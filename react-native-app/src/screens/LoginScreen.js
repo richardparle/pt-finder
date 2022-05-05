@@ -26,16 +26,22 @@ const LoginScreen = ({ navigation }) => {
     }
   };
 
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currUser) => {
       if (currUser) {
-        setUser(currUser);
-        navigation.navigate("Dashboard");
+        setUser(currUser.email);
+
+        //navigation.navigate("Dashboard");
       }
       setIsLoading(false);
     });
     return unsubscribe;
   }, []);
+
+  if (Object.keys(user).length !== 0) {
+    navigation.navigate("Dashboard", {userEmail: user});
+  }
 
   if (isLoading) return <h1>Loading...</h1>;
 
