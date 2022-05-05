@@ -49,6 +49,7 @@ const RegisterScreen = ({ navigation }) => {
           username,
         });
         console.log("PTDETAILS", PTDetails.id);
+        // add PT Dashboard
         navigation.navigate("Dashboard");
         alert("Registration complete");
       }
