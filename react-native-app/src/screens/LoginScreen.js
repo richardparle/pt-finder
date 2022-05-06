@@ -6,13 +6,15 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { auth } from "../firebase";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { UserContext } from "../UserContext";
 
 const LoginScreen = ({ navigation }) => {
-  const [user, setUser] = useState({});
+  const { user, setUser } = useContext(UserContext);
 
+  // const [user, setUser] = useState({});
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(true);
