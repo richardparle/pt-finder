@@ -9,15 +9,18 @@ import { db } from "../firebase";
 
 const Dashboard = () => {
   const { user, setUser } = useContext(UserContext);
-  const readUser = JSON.stringify(user);
-  console.log(user);
+  const readUser = JSON.stringify(user.email);
+  const readUserEmail = readUser.replaceAll('"', "");
+  console.log(readUserEmail);
+
+  const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
     const colRef = collection(db, "users");
     getDocs(colRef)
       .then((snapshot) => {
         snapshot.docs.forEach((doc) => {
-          if (doc.data().email === readUser.email) {
+          if (doc.data().email === readUserEmail) {
             setUser({
               ...doc.data(),
               id: doc.id,
@@ -28,12 +31,11 @@ const Dashboard = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  console.log(user);
+
   return (
     <div>
-      <h1>Welcome</h1>
-      <p>{user.username}</p>
-      <p>{user.postcode}</p>
-      <p>{user.email}</p>
+      <h1>Welcome {user.username}</h1>
       <br></br>
       <ProfileDetailsBtn />
       <SearchGymsBtn />
