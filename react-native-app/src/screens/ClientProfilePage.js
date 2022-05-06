@@ -1,17 +1,8 @@
-import React, { useContext } from "react";
-import { UserContext } from "../UserContext";
+import React from "react";
+import PersonalInfo from "../components/PersonalInfo";
 
 const ClientProfilePage = () => {
-  const { user, setUser } = useContext(UserContext);
-  const readUser = JSON.stringify(user.email);
-  console.log(user);
-  return (
-    <>
-      <h1>Profile page</h1>
-      <h2>{user.username}</h2>
-      <h2>{user.postcode}</h2>
-    </>
-  );
+  return <PersonalInfo />;
 };
 
 export default ClientProfilePage;

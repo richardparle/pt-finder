@@ -18,6 +18,7 @@ const RegisterScreen = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [postcode, setPostcode] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [isPersonalTrainer, setisPersonalTrainer] = useState(false);
 
   const handleSignup = async () => {
@@ -38,6 +39,7 @@ const RegisterScreen = ({ navigation }) => {
           email,
           postcode,
           username,
+          phoneNumber,
         });
         console.log("USERDETAILS", UserDetails.id);
         alert("Registration complete");
@@ -47,6 +49,7 @@ const RegisterScreen = ({ navigation }) => {
           email,
           postcode,
           username,
+          phoneNumber,
         });
         console.log("PTDETAILS", PTDetails.id);
         // add PT Dashboard
@@ -79,17 +82,23 @@ const RegisterScreen = ({ navigation }) => {
           style={styles.input}
         />
         <TextInput
-          placeholder="Password"
-          value={password}
-          onChangeText={(text) => setPassword(text)}
+          placeholder="Phone Number"
+          value={phoneNumber}
+          onChangeText={(text) => setPhoneNumber(text)}
           style={styles.input}
-          secureTextEntry={true}
         />
         <TextInput
           placeholder="Postcode"
           value={postcode}
           onChangeText={(text) => setPostcode(text)}
           style={styles.input}
+        />
+        <TextInput
+          placeholder="Password"
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+          style={styles.input}
+          secureTextEntry={true}
         />
         <CheckBox
           value={isPersonalTrainer}
