@@ -39,6 +39,10 @@ const LoginScreen = ({ navigation }) => {
     return unsubscribe;
   }, []);
 
+  // if (Object.keys(user).length !== 0) {
+  //   navigation.navigate("Dashboard");
+  // }
+
   if (isLoading) return <h1>Loading...</h1>;
 
   return (
