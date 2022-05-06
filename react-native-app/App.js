@@ -5,26 +5,33 @@ import LoginScreen from "./src/screens/LoginScreen";
 import RegisterScreen from "./src/screens/RegisterScreen";
 import Dashboard from "./src/screens/Dashboard";
 import ClientProfilePage from "./src/screens/ClientProfilePage";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import SearchGymsPage from "./src/screens/SearchGymsPage";
+import { UserContext } from "./src/UserContext";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [user, setUser] = useState(null);
+
+  const providerUser = useMemo(() => ({ user, setUser }), [user, setUser]);
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-        <Stack.Screen name="Dashboard" component={Dashboard} />
-        <Stack.Screen name="ClientProfile" component={ClientProfilePage} />
-        <Stack.Screen name="SearchGyms" component={SearchGymsPage} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <UserContext.Provider value={providerUser}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+          <Stack.Screen name="Dashboard" component={Dashboard} />
+          <Stack.Screen name="ClientProfile" component={ClientProfilePage} />
+          <Stack.Screen name="SearchGyms" component={SearchGymsPage} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </UserContext.Provider>
   );
 }
 
