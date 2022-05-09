@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   CheckBox,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { db } from "../firebase";
@@ -19,19 +19,11 @@ const RegisterScreen = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [postcode, setPostcode] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [profilePicURL, setProfilePicURL] = useState("");
+  const [exerciseGoals, setExerciseGoals] = useState([]);
   const [isPersonalTrainer, setisPersonalTrainer] = useState(false);
 
   const handleSignup = async () => {
-    // const signupValidation = () => {
-    //   let isValid = true;
-    //   if (!username.match("^.{8,}$")) {
-    //     isValid = false;
-    //     console.log("username", isValid);
-    //     alert("username not long enough - 8 chars at least needed");
-    //   }
-    // };
-    /////Need to stop further processing if validation fails
-
     try {
       const user = await createUserWithEmailAndPassword(auth, email, password);
       if (!isPersonalTrainer) {
@@ -40,7 +32,16 @@ const RegisterScreen = ({ navigation }) => {
           postcode,
           username,
           phoneNumber,
+          profilePicURL,
         });
+        const UserExerciseGoals = await addDoc(
+          collection(db, "userExerciseGoals"),
+          {
+            email,
+            exerciseGoals,
+          }
+        );
+
         console.log("USERDETAILS", UserDetails.id);
         alert("Registration complete");
         navigation.navigate("Dashboard");
@@ -50,6 +51,7 @@ const RegisterScreen = ({ navigation }) => {
           postcode,
           username,
           phoneNumber,
+          profilePicURL,
         });
         console.log("PTDETAILS", PTDetails.id);
         // add PT Dashboard
@@ -69,11 +71,6 @@ const RegisterScreen = ({ navigation }) => {
           value={username}
           onChangeText={(text) => setUsername(text)}
           style={styles.input}
-          pattern={[
-            "^.{8,}$", // min 8 chars
-            "(?=.*\\d)", // number required
-            "(?=.*[A-Z])", // uppercase letter
-          ]}
         />
         <TextInput
           placeholder="Email"
@@ -99,6 +96,12 @@ const RegisterScreen = ({ navigation }) => {
           onChangeText={(text) => setPassword(text)}
           style={styles.input}
           secureTextEntry={true}
+        />
+        <TextInput
+          placeholder="ProfilePic"
+          value={profilePicURL}
+          onChangeText={(text) => setProfilePicURL(text)}
+          style={styles.input}
         />
         <CheckBox
           value={isPersonalTrainer}
