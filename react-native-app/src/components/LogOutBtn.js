@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text, View } from "react-native";
 import { styles } from "../screens/LoginScreen";
 import { auth } from "../firebase";
 import { useNavigation } from "@react-navigation/core";
@@ -13,9 +13,11 @@ const LogOutBtn = () => {
   };
 
   return (
-    <TouchableOpacity onPress={logOut} style={styles.button}>
-      <Text style={styles.buttonText}>Log out</Text>
-    </TouchableOpacity>
+    <View style={styles.buttonContainer}>
+      <TouchableOpacity onPress={logOut} style={styles.button}>
+        <Text style={styles.buttonText}>Log out</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 

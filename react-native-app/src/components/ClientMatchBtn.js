@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/core";
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text, View } from "react-native";
 import { styles } from "../screens/LoginScreen";
 
 const ClientMatchBtn = () => {
@@ -9,9 +9,11 @@ const ClientMatchBtn = () => {
   };
 
   return (
-    <TouchableOpacity onPress={navToClientMatch} style={styles.button}>
-      <Text style={styles.buttonText}>Find a PT</Text>
-    </TouchableOpacity>
+    <View style={styles.buttonContainer}>
+      <TouchableOpacity onPress={navToClientMatch} style={styles.button}>
+        <Text style={styles.buttonText}>Find a PT</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 

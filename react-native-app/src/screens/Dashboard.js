@@ -8,13 +8,12 @@ import { UserContext } from "../UserContext";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import { View, Text } from "react-native";
+import { styles } from "./LoginScreen";
 
 const Dashboard = () => {
   const { user, setUser } = useContext(UserContext);
   const readUser = JSON.stringify(user.email);
   const readUserEmail = readUser.replaceAll('"', "");
-
-  // const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
     const colRef = collection(db, "users");
@@ -33,13 +32,13 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <View>
-    <div>
-      <h1 fontFamily="sans-serif">{user.username}'s Dashboard</h1>
-      <h3>Here you can view your profile details, log weight for the day and find a personal trainer near you!</h3>
-      <br></br>
+    <View style={styles.container}>
+      <h1>{user.username}'s Dashboard</h1>
+      <p>
+        Here you can view your profile details, log weight for the day and find
+        a personal trainer near you!
+      </p>
       <ProfileDetailsBtn />
-      <WeightTrackerBtn />
       <ClientMatchBtn />
       <LogOutBtn />
     </View>
