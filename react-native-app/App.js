@@ -5,6 +5,7 @@ import LoginScreen from "./src/screens/LoginScreen";
 import RegisterScreen from "./src/screens/RegisterScreen";
 import Dashboard from "./src/screens/Dashboard";
 import ClientProfilePage from "./src/screens/ClientProfilePage";
+import PTProfilePage from "./src/screens/PTProfilePage";
 import { useState, useMemo } from "react";
 import SearchGymsPage from "./src/screens/SearchGymsPage";
 import { UserContext } from "./src/UserContext";
@@ -26,9 +27,14 @@ export default function App() {
             options={{ headerShown: false }}
           />
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-          <Stack.Screen name="Dashboard" component={Dashboard} />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Dashboard"
+            component={Dashboard}
+          />
           <Stack.Screen name="ClientProfile" component={ClientProfilePage} />
           <Stack.Screen name="SearchGyms" component={SearchGymsPage} />
+          <Stack.Screen name="PTProfilePage" component={PTProfilePage} />
         </Stack.Navigator>
       </NavigationContainer>
     </UserContext.Provider>
