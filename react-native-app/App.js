@@ -7,6 +7,7 @@ import Dashboard from "./src/screens/Dashboard";
 import ClientProfilePage from "./src/screens/ClientProfilePage";
 import { useState } from "react";
 import SearchGymsPage from "./src/screens/SearchGymsPage";
+import WeightTrackerScreen from "./src/screens/WeightTrackerScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ export default function App() {
         <Stack.Screen name="Dashboard" component={Dashboard} />
         <Stack.Screen name="ClientProfile" component={ClientProfilePage} />
         <Stack.Screen name="SearchGyms" component={SearchGymsPage} />
+        <Stack.Screen name="WeightTracker" component={WeightTrackerScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
