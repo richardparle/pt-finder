@@ -20,7 +20,6 @@ const RegisterScreen = ({ navigation }) => {
   const [location, setLocation] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isPersonalTrainer, setIsPersonalTrainer] = useState(false);
-  console.log(isPersonalTrainer);
 
   const handleSignup = async () => {
     try {
@@ -80,12 +79,6 @@ const RegisterScreen = ({ navigation }) => {
           placeholder="Location (e.g Manchester)"
           value={location}
           onChangeText={(text) => setLocation(text)}
-          style={styles.input}
-        />
-        <TextInput
-          placeholder="City"
-          value={city}
-          onChangeText={(text) => setCity(text)}
           style={styles.input}
         />
         <TextInput
