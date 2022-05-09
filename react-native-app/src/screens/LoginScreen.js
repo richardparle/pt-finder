@@ -14,7 +14,6 @@ import { UserContext } from "../UserContext";
 const LoginScreen = ({ navigation }) => {
   const { user, setUser } = useContext(UserContext);
 
-  // const [user, setUser] = useState({});
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -39,15 +38,12 @@ const LoginScreen = ({ navigation }) => {
     return unsubscribe;
   }, []);
 
-  // if (Object.keys(user).length !== 0) {
-  //   navigation.navigate("Dashboard");
-  // }
-
   if (isLoading) return <h1>Loading...</h1>;
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <View style={styles.inputContainer}>
+        {/* <Image source={require("../images/app-logo.png")} /> */}
         <TextInput
           placeholder="Email"
           value={email}
