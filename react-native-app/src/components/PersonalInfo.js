@@ -18,7 +18,7 @@ const PersonalInfo = () => {
       <Text>
         <At />
         {user.username}
-        {console.log(user)}
+        {console.log(user.username)}
       </Text>
       <Text>
         <EnvelopeCheckFill />

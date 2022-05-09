@@ -6,6 +6,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../UserContext";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
+import PTDashboardBtn from "../components/PTDashboard";
 
 const Dashboard = () => {
   const { user, setUser } = useContext(UserContext);
@@ -39,6 +40,7 @@ const Dashboard = () => {
       <SearchGymsBtn />
       <DashboardInputBox />
       <LogOutBtn />
+      <PTDashboardBtn />
     </div>
   );
 };
