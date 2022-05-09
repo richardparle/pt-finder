@@ -18,6 +18,7 @@ const RegisterScreen = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [postcode, setPostcode] = useState("");
+  const [city, setCity] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isPersonalTrainer, setisPersonalTrainer] = useState(false);
 
@@ -38,6 +39,7 @@ const RegisterScreen = ({ navigation }) => {
         const UserDetails = await addDoc(collection(db, "users"), {
           email,
           postcode,
+          city,
           username,
           phoneNumber,
         });
@@ -48,6 +50,7 @@ const RegisterScreen = ({ navigation }) => {
         const PTDetails = await addDoc(collection(db, "Personal Trainers"), {
           email,
           postcode,
+          city,
           username,
           phoneNumber,
         });
@@ -91,6 +94,12 @@ const RegisterScreen = ({ navigation }) => {
           placeholder="Postcode"
           value={postcode}
           onChangeText={(text) => setPostcode(text)}
+          style={styles.input}
+        />
+        <TextInput
+          placeholder="City"
+          value={city}
+          onChangeText={(text) => setCity(text)}
           style={styles.input}
         />
         <TextInput

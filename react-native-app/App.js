@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "./src/screens/LoginScreen";
+import ClientMatch from "./src/screens/ClientMatch";
 import RegisterScreen from "./src/screens/RegisterScreen";
 import Dashboard from "./src/screens/Dashboard";
 import ClientProfilePage from "./src/screens/ClientProfilePage";
@@ -9,7 +10,6 @@ import { useState, useMemo } from "react";
 import SearchGymsPage from "./src/screens/SearchGymsPage";
 import WeightTrackerScreen from "./src/screens/WeightTrackerScreen";
 import { UserContext } from "./src/UserContext";
-
 
 const Stack = createNativeStackNavigator();
 
@@ -19,7 +19,6 @@ export default function App() {
   const providerUser = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   return (
-
     <UserContext.Provider value={providerUser}>
       <NavigationContainer>
         <Stack.Navigator>
@@ -33,6 +32,7 @@ export default function App() {
           <Stack.Screen name="ClientProfile" component={ClientProfilePage} />
           <Stack.Screen name="SearchGyms" component={SearchGymsPage} />
           <Stack.Screen name="WeightTracker" component={WeightTrackerScreen} />
+          <Stack.Screen name="ClientMatch" component={ClientMatch} />
         </Stack.Navigator>
       </NavigationContainer>
     </UserContext.Provider>
