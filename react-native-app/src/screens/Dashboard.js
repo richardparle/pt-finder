@@ -33,7 +33,6 @@ const Dashboard = () => {
       .catch((err) => console.log(err));
   }, []);
 
-
   return (
     <div>
       <h1>Welcome {user.username}</h1>

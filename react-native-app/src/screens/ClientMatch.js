@@ -1,4 +1,12 @@
-import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 import { styles } from "./LoginScreen";
 import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
@@ -26,7 +34,7 @@ const ClientMatch = () => {
   return (
     <>
       <View style={styles.container}>
-        <Text style={{ fontSize: 50, color: "blue" }}>Find a PT</Text>
+        <Text style={{ fontSize: 50 }}>Find a PT</Text>
         <TextInput
           style={style.input}
           placeholder="Enter location"
@@ -37,7 +45,51 @@ const ClientMatch = () => {
         />
         <ul key="testDataList">
           {localPts.map((user, index) => {
-            return <li key={"testli" + index}>{user.email}</li>;
+            return (
+              <li
+                style={{
+                  listStyleType: "none",
+                  width: "75%",
+                }}
+                key={"testli" + index}
+              >
+                <TouchableOpacity>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      padding: "10px",
+                      margin: "10px",
+                      backgroundColor: "yellow",
+                      borderRadius: 10,
+                    }}
+                  >
+                    <div>
+                      <Image
+                        source={{
+                          uri: `${user.image}`,
+                        }}
+                        style={{
+                          width: 70,
+                          height: 70,
+                          borderRadius: 35,
+                          float: "left",
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <h4>{user.name}</h4>
+                      <br></br>
+                      <h5>Contact Details</h5>
+                      <p>Name: {user.name}</p>
+                      <p>Speciality: {user.speciality}</p>
+                      <p>Email: {user.email}</p>
+                      <p>Phone Number: {user.phoneNumber}</p>
+                    </div>
+                  </div>
+                </TouchableOpacity>
+              </li>
+            );
           })}
         </ul>
       </View>
