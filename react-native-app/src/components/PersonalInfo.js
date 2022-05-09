@@ -11,6 +11,7 @@ import {
 
 const PersonalInfo = () => {
   const { user, setUser } = useContext(UserContext);
+
   return (
     <View style={styles.container}>
       <h1>Profile page</h1>
@@ -18,7 +19,6 @@ const PersonalInfo = () => {
       <Text>
         <At />
         {user.username}
-        {console.log(user)}
       </Text>
       <Text>
         <EnvelopeCheckFill />
