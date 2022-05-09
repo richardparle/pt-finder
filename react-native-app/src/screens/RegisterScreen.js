@@ -17,41 +17,30 @@ const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [postcode, setPostcode] = useState("");
+  const [location, setLocation] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [isPersonalTrainer, setisPersonalTrainer] = useState(false);
+  const [isPersonalTrainer, setIsPersonalTrainer] = useState(false);
+  console.log(isPersonalTrainer);
 
   const handleSignup = async () => {
-    // const signupValidation = () => {
-    //   let isValid = true;
-    //   if (!username.match("^.{8,}$")) {
-    //     isValid = false;
-    //     console.log("username", isValid);
-    //     alert("username not long enough - 8 chars at least needed");
-    //   }
-    // };
-    /////Need to stop further processing if validation fails
-
     try {
       const user = await createUserWithEmailAndPassword(auth, email, password);
       if (!isPersonalTrainer) {
-        const UserDetails = await addDoc(collection(db, "users"), {
+        await addDoc(collection(db, "users"), {
           email,
-          postcode,
+          location,
           username,
           phoneNumber,
         });
-        console.log("USERDETAILS", UserDetails.id);
         alert("Registration complete");
         navigation.navigate("Dashboard");
       } else {
-        const PTDetails = await addDoc(collection(db, "Personal Trainers"), {
+        await addDoc(collection(db, "Personal Trainers"), {
           email,
-          postcode,
+          location,
           username,
           phoneNumber,
         });
-        console.log("PTDETAILS", PTDetails.id);
         // add PT Dashboard
         navigation.navigate("PTProfilePage");
         alert("Registration complete");
@@ -88,9 +77,9 @@ const RegisterScreen = ({ navigation }) => {
           style={styles.input}
         />
         <TextInput
-          placeholder="Postcode"
-          value={postcode}
-          onChangeText={(text) => setPostcode(text)}
+          placeholder="Location (e.g Manchester)"
+          value={location}
+          onChangeText={(text) => setLocation(text)}
           style={styles.input}
         />
         <TextInput
@@ -100,19 +89,21 @@ const RegisterScreen = ({ navigation }) => {
           style={styles.input}
           secureTextEntry={true}
         />
-        <CheckBox
-          value={isPersonalTrainer}
-          onValueChange={setisPersonalTrainer}
-          style={styles.checkbox}
-        />
-        <Text>Check this box if you are a personal trainer</Text>
-      </View>
-      <View style={styles.buttonContainer}>
+        <View style={styles.checkboxContainer}>
+          <Text style={styles.label}>Are you a personal trainer?</Text>
+          <CheckBox
+            value={isPersonalTrainer}
+            onValueChange={setIsPersonalTrainer}
+            style={styles.checkbox}
+          />
+        </View>
         <TouchableOpacity onPress={handleSignup} style={styles.button}>
           <Text style={styles.buttonOutlineText}>Register</Text>
         </TouchableOpacity>
+        <Text>
+          Register as Personal Trainer: {isPersonalTrainer ? "YES" : "NO"}
+        </Text>
       </View>
-      <Text>Is personal trainer: {isPersonalTrainer ? "YES" : "NO"}</Text>
     </KeyboardAvoidingView>
   );
 };
@@ -133,7 +124,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   button: {
-    backgroundColor: "#0782F9",
+    backgroundColor: "#F0CF29",
     width: "100%",
     padding: 15,
     borderRadius: 10,
@@ -141,13 +132,24 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   buttonOutline: {
-    backgroundColor: "white",
+    backgroundColor: "black",
     marginTop: 5,
-    borderColor: "#0782F9",
+    borderColor: "black",
     borderWidth: 2,
   },
-  buttonText: { color: "white", fontWeight: "700", fontSize: 16 },
-  buttonOutlineText: { color: "white", fontWeight: "700", fontSize: 16 },
+  buttonText: {
+    color: "black",
+    fontWeight: "700",
+    fontSize: 16,
+  },
+  buttonOutlineText: {
+    color: "black",
+    fontWeight: "700",
+    fontSize: 16,
+  },
+  label: {
+    margin: 8,
+  },
   checkboxContainer: {
     flexDirection: "row",
     marginBottom: 20,
