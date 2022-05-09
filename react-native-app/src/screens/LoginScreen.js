@@ -38,12 +38,12 @@ const LoginScreen = ({ navigation }) => {
     return unsubscribe;
   }, []);
 
-
   if (isLoading) return <h1>Loading...</h1>;
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <View style={styles.inputContainer}>
+        {/* <Image source={require("../images/app-logo.png")} /> */}
         <TextInput
           placeholder="Email"
           value={email}
