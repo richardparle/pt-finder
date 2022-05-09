@@ -83,6 +83,12 @@ const RegisterScreen = ({ navigation }) => {
           style={styles.input}
         />
         <TextInput
+          placeholder="City"
+          value={city}
+          onChangeText={(text) => setCity(text)}
+          style={styles.input}
+        />
+        <TextInput
           placeholder="Password"
           value={password}
           onChangeText={(text) => setPassword(text)}
