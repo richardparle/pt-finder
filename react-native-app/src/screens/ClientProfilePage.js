@@ -1,5 +1,8 @@
+import React from "react";
+import PersonalInfo from "../components/PersonalInfo";
+
 const ClientProfilePage = () => {
-  return <h1>Profile page</h1>;
+  return <PersonalInfo />;
 };
 
 export default ClientProfilePage;
