@@ -1,6 +1,5 @@
 import LogOutBtn from "../components/LogOutBtn";
 import ProfileDetailsBtn from "../components/ProfileDetailsBtn";
-import SearchGymsBtn from "../components/SearchGymsBtn";
 import ClientMatchBtn from "../components/ClientMatchBtn";
 import WeightTrackerBtn from "../components/WeightTrackerBtn";
 import DashboardInputBox from "../components/DashboardInputBox";
@@ -8,7 +7,6 @@ import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../UserContext";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
-import PTDashboardBtn from "../components/PTDashboardBtn";
 
 const Dashboard = () => {
   const { user, setUser } = useContext(UserContext);
@@ -36,15 +34,13 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h1>Welcome {user.username}</h1>
+      <h1>{user.username}'s Dashboard</h1>
+      <h3>Here you can view your profile details, log weight for the day and find a personal trainer near you!</h3>
       <br></br>
       <ProfileDetailsBtn />
-      <SearchGymsBtn />
       <WeightTrackerBtn />
-      <DashboardInputBox />
       <ClientMatchBtn />
       <LogOutBtn />
-      <PTDashboardBtn />
     </div>
   );
 };

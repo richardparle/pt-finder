@@ -9,7 +9,7 @@ const WeightTrackerBtn = () => {
   };
   return (
     <TouchableOpacity onPress={navToWeightTracker} style={styles.button}>
-      <Text style={styles.buttonText}>Weight tracker page</Text>
+      <Text style={styles.buttonText}>Log today's weight</Text>
     </TouchableOpacity>
   );
 };
