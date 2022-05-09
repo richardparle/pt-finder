@@ -10,7 +10,7 @@ const ProfileDetailsBtn = () => {
 
   return (
     <TouchableOpacity onPress={navToProfilePage} style={styles.button}>
-      <Text style={styles.buttonText}>Client profile page</Text>
+      <Text style={styles.buttonText}>View profile</Text>
     </TouchableOpacity>
   );
 };
