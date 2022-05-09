@@ -73,7 +73,7 @@ const LoginScreen = ({ navigation }) => {
           }}
           style={styles.button}
         >
-          <Text style={styles.buttonOutlineText}>Register</Text>
+          <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   button: {
-    backgroundColor: "#0782F9",
+    backgroundColor: "#F0CF29",
     width: "100%",
     padding: 15,
     borderRadius: 10,
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     borderColor: "#0782F9",
     borderWidth: 2,
   },
-  buttonText: { color: "white", fontWeight: "700", fontSize: 16 },
+  buttonText: { color: "black", fontWeight: "700", fontSize: 16 },
   buttonOutlineText: { color: "white", fontWeight: "700", fontSize: 16 },
 });
 
