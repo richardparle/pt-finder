@@ -7,6 +7,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../UserContext";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
+import PTDashboardBtn from "../components/PTDashboardBtn";
 
 
 const Dashboard = () => {
@@ -42,6 +43,7 @@ const Dashboard = () => {
       <WeightTrackerBtn />
       <DashboardInputBox />
       <LogOutBtn />
+      <PTDashboardBtn />
     </div>
   );
 };
