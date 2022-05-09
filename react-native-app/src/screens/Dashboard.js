@@ -1,12 +1,14 @@
 import LogOutBtn from "../components/LogOutBtn";
 import ProfileDetailsBtn from "../components/ProfileDetailsBtn";
 import SearchGymsBtn from "../components/SearchGymsBtn";
+import WeightTrackerBtn from "../components/WeightTrackerBtn";
 import DashboardInputBox from "../components/DashboardInputBox";
 import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../UserContext";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import PTDashboardBtn from "../components/PTDashboardBtn";
+
 
 const Dashboard = () => {
   const { user, setUser } = useContext(UserContext);
@@ -38,6 +40,7 @@ const Dashboard = () => {
       <br></br>
       <ProfileDetailsBtn />
       <SearchGymsBtn />
+      <WeightTrackerBtn />
       <DashboardInputBox />
       <LogOutBtn />
       <PTDashboardBtn />
