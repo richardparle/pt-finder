@@ -8,7 +8,9 @@ import ClientProfilePage from "./src/screens/ClientProfilePage";
 import PTProfilePage from "./src/screens/PTProfilePage";
 import { useState, useMemo } from "react";
 import SearchGymsPage from "./src/screens/SearchGymsPage";
+import WeightTrackerScreen from "./src/screens/WeightTrackerScreen";
 import { UserContext } from "./src/UserContext";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +20,7 @@ export default function App() {
   const providerUser = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   return (
+
     <UserContext.Provider value={providerUser}>
       <NavigationContainer>
         <Stack.Navigator>
@@ -35,6 +38,8 @@ export default function App() {
           <Stack.Screen name="ClientProfile" component={ClientProfilePage} />
           <Stack.Screen name="SearchGyms" component={SearchGymsPage} />
           <Stack.Screen name="PTProfilePage" component={PTProfilePage} />
+          <Stack.Screen name="WeightTracker" component={WeightTrackerScreen} />
+
         </Stack.Navigator>
       </NavigationContainer>
     </UserContext.Provider>
