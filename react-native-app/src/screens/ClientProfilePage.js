@@ -6,9 +6,9 @@ import ExerciseGoals from "../components/ExerciseGoals";
 const ClientProfilePage = () => {
   return (
     <>
+      <ClientProfilePic />
       <PersonalInfo />
       <ExerciseGoals />
-      <ClientProfilePic />
     </>
   );
 };

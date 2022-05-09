@@ -4,21 +4,19 @@ import { UserContext } from "../UserContext";
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 50,
+    paddingTop: 10,
   },
   stretch: {
-    width: 200,
-    height: 200,
+    width: 100,
+    height: 100,
     resizeMode: "stretch",
   },
 });
 
 const ClientProfilePic = () => {
   const { user } = useContext(UserContext);
-  console.log("USER", user.profilePicURL);
   return (
     <View style={styles.container}>
-      <h2>Profile Avatar</h2>
       <Image style={styles.stretch} source={{ uri: user.profilePicURL }} />
     </View>
   );

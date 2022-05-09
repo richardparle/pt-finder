@@ -1,4 +1,4 @@
-import { collection, getDocs, setDoc } from "firebase/firestore";
+import { addDoc, collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { useEffect, useState, useContext } from "react";
 import { Bluetooth, CurrencyEuro } from "react-bootstrap-icons";
@@ -29,41 +29,30 @@ const ExerciseGoals = () => {
       setExerciseGoals((currExerciseGoals) => {
         return [...currExerciseGoals, currentGoalentry];
       });
+      // .then((goals) => {
+      console.log("Exer Goals2", exerciseGoals);
       setCurrentGoalentry("");
-      // const colRef=collection(db,"userExerciseGoals")
-      // getDocs(colRef).then((snapshot))=>{
-      //   let docRef=""
-      //   snapshot.doc.forEach((doc)=>{
-      //       if(doc.data().email ===)
-      //   })
-      // })
-      // setDoc(colRef, {
-      //     email: user.email,
-      //     exerciseGoals: exerciseGoals,
-      //   })
-      //     .then(() => {
-      //       console.log("DONE");
-      //     })
-      //     .catch(() => {
-      //       console.log("ERROR GOALS");
-      //     });
+      const colRef = collection(db, "userExerciseGoals");
+      getDocs(colRef).then((snapshot) => {
+        snapshot.docs.forEach((document) => {
+          if (document.data().email === user.email) {
+            console.log("DOC ID", document.id);
+            console.log("Exer Goals", exerciseGoals);
+            setDoc(doc(db, "userExerciseGoals", document.id), {
+              email: user.email,
+              exerciseGoals: ["hello"],
+            });
+          }
+        });
+      });
+      // });
     }
   };
-
-  console.log("GOALS", exerciseGoals);
 
   return (
     <>
       <h2>Exercise Goals</h2>
-      <View>
-        {exerciseGoals.map((goal, ind) => {
-          return (
-            <Text style={styles.goalListItem} key={ind}>
-              {goal}
-            </Text>
-          );
-        })}
-      </View>
+      <h3>Create an exercise goal:</h3>
       <View>
         <TextInput
           placeholder="Add New Exercise Goal"
@@ -74,10 +63,21 @@ const ExerciseGoals = () => {
           style={styles.input}
         />
       </View>
-      <View style={styles.buttonContainer}>
+      {/* <View style={styles.buttonContainer}> */}
+      <View>
         <TouchableOpacity onPress={saveGoalClick} style={styles.button}>
           <Text style={styles.buttonOutlineText}>Save New Goal</Text>
         </TouchableOpacity>
+      </View>
+      <h3>Exercise goals:</h3>
+      <View>
+        {exerciseGoals.map((goal, ind) => {
+          return (
+            <Text style={styles.goalListItem} key={ind}>
+              {goal}
+            </Text>
+          );
+        })}
       </View>
     </>
   );
@@ -92,28 +92,40 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 5,
+    marginLeft: 20,
+    marginRight: 20,
   },
   goalListItem: {
-    backgroundColor: "lightblue",
+    backgroundColor: "#F0CF29",
     paddingHorizontal: 15,
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 5,
   },
-
-  buttonContainer: {
-    width: "60%",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 40,
+  text: {
+    backgroundColor: "#F0CF29",
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    borderRadius: 10,
+    marginTop: 5,
   },
+  // buttonContainer: {
+  //   width: "100%",
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  //   marginTop: 5,
+  //   marginLeft: 20,
+  //   marginRight: 20,
+  // },
   button: {
-    backgroundColor: "#0782F9",
-    width: "100%",
+    backgroundColor: "#F0CF29",
+    width: "30%",
     padding: 15,
     borderRadius: 10,
     alignItems: "center",
     marginTop: 5,
+    marginLeft: 20,
+    marginRight: 20,
   },
   buttonOutline: {
     backgroundColor: "white",
@@ -121,8 +133,12 @@ const styles = StyleSheet.create({
     borderColor: "#0782F9",
     borderWidth: 2,
   },
-  buttonText: { color: "white", fontWeight: "700", fontSize: 16 },
-  buttonOutlineText: { color: "white", fontWeight: "700", fontSize: 16 },
+  buttonText: { color: "black", fontWeight: "700", fontSize: 16 },
+  buttonOutlineText: {
+    color: "black",
+    fontWeight: "700",
+    fontSize: 16,
+  },
   checkboxContainer: {
     flexDirection: "row",
     marginBottom: 20,
