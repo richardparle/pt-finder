@@ -6,6 +6,7 @@ import ClientMatch from "./src/screens/ClientMatch";
 import RegisterScreen from "./src/screens/RegisterScreen";
 import Dashboard from "./src/screens/Dashboard";
 import ClientProfilePage from "./src/screens/ClientProfilePage";
+import PTProfilePage from "./src/screens/PTProfilePage";
 import { useState, useMemo } from "react";
 import SearchGymsPage from "./src/screens/SearchGymsPage";
 import WeightTrackerScreen from "./src/screens/WeightTrackerScreen";
@@ -28,11 +29,17 @@ export default function App() {
             options={{ headerShown: false }}
           />
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-          <Stack.Screen name="Dashboard" component={Dashboard} />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Dashboard"
+            component={Dashboard}
+          />
           <Stack.Screen name="ClientProfile" component={ClientProfilePage} />
           <Stack.Screen name="SearchGyms" component={SearchGymsPage} />
+          <Stack.Screen name="PTProfilePage" component={PTProfilePage} />
           <Stack.Screen name="WeightTracker" component={WeightTrackerScreen} />
           <Stack.Screen name="ClientMatch" component={ClientMatch} />
+
         </Stack.Navigator>
       </NavigationContainer>
     </UserContext.Provider>

@@ -8,12 +8,12 @@ import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../UserContext";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
+import PTDashboardBtn from "../components/PTDashboardBtn";
 
 const Dashboard = () => {
   const { user, setUser } = useContext(UserContext);
   const readUser = JSON.stringify(user.email);
   const readUserEmail = readUser.replaceAll('"', "");
-  console.log(readUserEmail);
 
   const [userInfo, setUserInfo] = useState({});
 
@@ -33,7 +33,6 @@ const Dashboard = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(user);
 
   return (
     <div>
@@ -45,6 +44,7 @@ const Dashboard = () => {
       <DashboardInputBox />
       <ClientMatchBtn />
       <LogOutBtn />
+      <PTDashboardBtn />
     </div>
   );
 };

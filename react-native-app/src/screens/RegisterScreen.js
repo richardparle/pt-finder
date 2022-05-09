@@ -56,7 +56,7 @@ const RegisterScreen = ({ navigation }) => {
         });
         console.log("PTDETAILS", PTDetails.id);
         // add PT Dashboard
-        navigation.navigate("Dashboard");
+        navigation.navigate("PTProfilePage");
         alert("Registration complete");
       }
     } catch (err) {
