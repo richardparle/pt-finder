@@ -4,6 +4,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  Image,
 } from "react-native";
 import React, { useState, useEffect, useContext } from "react";
 import { auth } from "../firebase";
@@ -43,7 +44,16 @@ const LoginScreen = ({ navigation }) => {
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <View style={styles.inputContainer}>
-        {/* <Image source={require("../images/app-logo.png")} /> */}
+        <Image
+          style={{
+            width: 250,
+            height: 250,
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginBottom: 50,
+          }}
+          source={require("../images/app-logo.png")}
+        />
         <TextInput
           placeholder="Email"
           value={email}
