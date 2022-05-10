@@ -1,5 +1,5 @@
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
-import { styles } from "./LoginScreen";
+import { styles } from "../styles/styles";
 import { useState } from "react";
 import WeightTrackerBtn from "../components/WeightTrackerBtn";
 

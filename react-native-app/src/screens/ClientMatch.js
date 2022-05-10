@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import { styles } from "./LoginScreen";
+import { styles } from "../styles/styles";
 import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
@@ -36,7 +36,7 @@ const ClientMatch = () => {
       <View style={styles.container}>
         <Text style={{ fontSize: 50 }}>Find a PT</Text>
         <TextInput
-          style={style.input}
+          style={styles.input}
           placeholder="Enter location"
           onChangeText={(text) => {
             setText(text);
@@ -96,16 +96,5 @@ const ClientMatch = () => {
     </>
   );
 };
-
-const style = StyleSheet.create({
-  input: {
-    backgroundColor: "white",
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    borderRadius: 10,
-    marginTop: 5,
-    width: 200,
-  },
-});
 
 export default ClientMatch;
