@@ -11,6 +11,7 @@ import { auth } from "../firebase";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { UserContext } from "../UserContext";
 import { styles } from "../styles/styles";
+import { async } from "@firebase/util";
 
 const LoginScreen = ({ navigation }) => {
   const { user, setUser } = useContext(UserContext);
@@ -20,13 +21,17 @@ const LoginScreen = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const handleLogin = (e) => {
+  const handleLogin = async () => {
     try {
       setError("");
-      signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, email, password);
     } catch (err) {
-      console.log(err)
-      setError(err);
+      console.log(err.message);
+      if (err.message == "Firebase: Error (auth/invalid-email).") {
+        setError("Email address not recognised");
+      } else if (err.message == "Firebase: Error (auth/wrong-password).") {
+        setError("Password incorrect");
+      }
     }
   };
 
