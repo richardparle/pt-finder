@@ -18,13 +18,15 @@ const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
 
   const handleLogin = (e) => {
-    e.preventDefault();
     try {
+      setError("");
       signInWithEmailAndPassword(auth, email, password);
     } catch (err) {
-      alert(err.message);
+      console.log(err)
+      setError(err);
     }
   };
 
@@ -39,7 +41,7 @@ const LoginScreen = ({ navigation }) => {
     return unsubscribe;
   }, []);
 
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isLoading) return <Text style={styles.text}>Loading...</Text>;
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -67,7 +69,9 @@ const LoginScreen = ({ navigation }) => {
           value={password}
           onChangeText={(text) => setPassword(text)}
           style={styles.input}
+          secureTextEntry={true}
         />
+        <Text>{error}</Text>
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={handleLogin} style={styles.button}>
             <Text style={styles.buttonText}>Login</Text>
