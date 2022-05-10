@@ -62,6 +62,7 @@ const ClientMatch = () => {
                       margin: "10px",
                       backgroundColor: "yellow",
                       borderRadius: 10,
+                      fontFamily: "sans-serif",
                     }}
                   >
                     <div>

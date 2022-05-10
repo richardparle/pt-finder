@@ -54,9 +54,9 @@ const ExerciseGoals = () => {
 
   return (
     <>
-      <h2>Exercise Goals</h2>
-      <h3>Create an exercise goal:</h3>
-      <View>
+      <View style={styles.text}>
+        <h2>Exercise Goals</h2>
+        <h3>Create an exercise goal:</h3>
         <TextInput
           placeholder="Add New Exercise Goal"
           onChangeText={(text) => {
@@ -71,8 +71,8 @@ const ExerciseGoals = () => {
           <Text style={styles.buttonOutlineText}>Save New Goal</Text>
         </TouchableOpacity>
       </View>
-      <h3>Exercise goals:</h3>
-      <View>
+      <View style={styles.text}>
+        <Text>Exercise goals:</Text>
         {exerciseGoals.map((goal, ind) => {
           return (
             <Text style={styles.goalListItem} key={ind}>
@@ -86,6 +86,9 @@ const ExerciseGoals = () => {
 };
 
 const styles = StyleSheet.create({
+  text: {
+    fontFamily: "sans-serif",
+  },
   input: {
     backgroundColor: "white",
     paddingHorizontal: 15,
