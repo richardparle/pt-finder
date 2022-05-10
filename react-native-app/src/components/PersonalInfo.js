@@ -12,9 +12,7 @@ const PersonalInfo = () => {
   const { user, setUser } = useContext(UserContext);
 
   return (
-    // <View style={styles.container}>
-    <View style={styles.text}>
-      <h1>Profile Details</h1>
+    <View>
       <Text style={styles.textTitle}>Personal Info:</Text>
       <Text style={styles.text}>
         <At />
@@ -26,7 +24,7 @@ const PersonalInfo = () => {
       </Text>
       <Text style={styles.text}>
         <HouseFill />
-        {" Postcode:       " + user.postcode}
+        {" Location:       " + user.location}
       </Text>
       <Text style={styles.text}>
         <TelephoneFill />
@@ -65,6 +63,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 5,
+    marginLeft: 10,
+    marginRight: 10,
   },
   buttonContainer: {
     width: "60%",

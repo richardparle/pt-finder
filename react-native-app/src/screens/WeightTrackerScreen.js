@@ -1,16 +1,72 @@
-import { View, Text, TextInput, Button, StyleSheet } from "react-native";
-import { styles } from "../styles/styles";
-import { useState } from "react";
-import WeightTrackerBtn from "../components/WeightTrackerBtn";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
+import { useState, useContext, useEffect } from "react";
+import { collection, getDocs, setDoc, doc } from "firebase/firestore";
+import { db } from "../firebase";
+import { UserContext } from "../UserContext";
+
+const currDate = () => {
+  let x = new Date(Date.now());
+  return (
+    x.getDate().toString().padStart(2, 0) +
+    "-" +
+    x.getMonth().toString().padStart(2, 0) +
+    "-" +
+    x.getFullYear() +
+    " " +
+    x.getHours().toString().padStart(2, 0) +
+    ":" +
+    x.getMinutes().toString().padStart(2, 0)
+  );
+};
 
 const WeightTrackerScreen = () => {
   const [weight, setWeight] = useState([]);
   const [text, setText] = useState("");
+  const { user, setUser } = useContext(UserContext);
+
+  useEffect(() => {
+    const colRef = collection(db, "userWeightTracker");
+    getDocs(colRef).then((snapshot) => {
+      snapshot.docs.forEach((document) => {
+        if (document.data().email === user.email) {
+          setWeight(document.data().weightTracker);
+          console.log(document.data().weightTracker);
+        }
+      });
+    });
+  }, []);
+
+  useEffect(() => {
+    const colRef = collection(db, "userWeightTracker");
+    getDocs(colRef).then((snapshot) => {
+      snapshot.docs.forEach((document) => {
+        if (document.data().email === user.email) {
+          setDoc(doc(db, "userWeightTracker", document.id), {
+            email: user.email,
+            weightTracker: weight,
+          });
+        }
+      });
+    });
+  }, [weight]);
+
+  const addWeightClick = () => {
+    setWeight((currWeights) => {
+      return [{ weight: text, date: currDate() }, ...currWeights];
+    });
+    setText("");
+  };
 
   return (
     <>
-      <View style={styles.container}>
-        <Text style={{ fontSize: 50, color: "blue" }}>Weight Tracker</Text>
+      <View>
+        <Text style={style.textTitle}>Weight Tracker</Text>
         <TextInput
           style={style.input}
           placeholder="Enter current weight (kg)"
@@ -19,20 +75,20 @@ const WeightTrackerScreen = () => {
           }}
           value={text}
         />
-        <Button
-          title="Add"
-          onPress={() => {
-            setWeight([...weight, text]);
-            setText("");
-          }}
-        />
-        <Text>
-          <ul>
-            {weight.map((item) => {
-              return <li key={Math.random() * 1000}>{`${item}kg`}</li>;
-            })}
-          </ul>
-        </Text>
+        <View>
+          <TouchableOpacity onPress={addWeightClick} style={style.button}>
+            <Text style={style.buttonOutlineText}>Add</Text>
+          </TouchableOpacity>
+        </View>
+        <View>
+          {weight.map((item, ind) => {
+            return (
+              <Text style={style.weightListItem} key={ind}>
+                {`Weight: ${item.weight}kg                 Date: ${item.date}`}
+              </Text>
+            );
+          })}
+        </View>
       </View>
     </>
   );
@@ -45,10 +101,47 @@ const style = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 5,
-    width: 200,
+    marginLeft: 20,
+    marginRight: 20,
+    width: "30%",
+    minWidth: 300,
+  },
+  textTitle: {
+    fontWeight: "700",
+    fontSize: 16,
+    backgroundColor: "#F0CF29",
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    borderRadius: 10,
+    marginTop: 50,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  button: {
+    backgroundColor: "#F0CF29",
+    width: "25%",
+    padding: 6,
+    borderRadius: 10,
+    alignItems: "center",
+    marginTop: 5,
+    marginLeft: 20,
+    marginRight: 20,
+    minWidth: 150,
+  },
+  buttonOutlineText: {
+    color: "black",
+    fontWeight: "600",
+    fontSize: 14,
+  },
+  weightListItem: {
+    backgroundColor: "#F0CF29",
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    borderRadius: 10,
+    marginTop: 5,
+    marginLeft: 40,
+    marginRight: 40,
   },
 });
 
 export default WeightTrackerScreen;
-
-<WeightTrackerBtn />;
