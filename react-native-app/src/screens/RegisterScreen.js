@@ -1,11 +1,11 @@
 import {
-  StyleSheet,
   View,
   KeyboardAvoidingView,
   Text,
   TextInput,
   TouchableOpacity,
   CheckBox,
+  Image,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { auth } from "../firebase";
@@ -64,6 +64,18 @@ const RegisterScreen = ({ navigation }) => {
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <View style={styles.inputContainer}>
+        <Image
+          style={{
+            width: 250,
+            height: 250,
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginBottom: 50,
+            borderWidth: "2.5px",
+            borderRadius: "8px",
+          }}
+          source={require("../images/app-logo.png")}
+        />
         <TextInput
           placeholder="Username"
           value={username}
@@ -119,6 +131,5 @@ const RegisterScreen = ({ navigation }) => {
     </KeyboardAvoidingView>
   );
 };
-
 
 export default RegisterScreen;

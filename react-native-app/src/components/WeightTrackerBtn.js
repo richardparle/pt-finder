@@ -5,7 +5,7 @@ import { styles } from "../styles/styles";
 const WeightTrackerBtn = () => {
   const navigation = useNavigation();
   const navToWeightTracker = () => {
-    navigation.replace("WeightTracker");
+    navigation.navigate("WeightTracker");
   };
   return (
     <TouchableOpacity onPress={navToWeightTracker} style={styles.button}>

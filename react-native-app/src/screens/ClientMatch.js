@@ -32,7 +32,6 @@ const ClientMatch = () => {
   });
 
   return (
-
     <div style={{ backgroundColor: "rgb(242, 242, 242)" }}>
       <View>
         <ScrollView contentContainerStyle={styles.container}>

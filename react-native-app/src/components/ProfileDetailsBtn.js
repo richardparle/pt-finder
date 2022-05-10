@@ -5,7 +5,7 @@ import { styles } from "../styles/styles";
 const ProfileDetailsBtn = () => {
   const navigation = useNavigation();
   const navToProfilePage = () => {
-    navigation.replace("ClientProfile");
+    navigation.navigate("ClientProfile");
   };
 
   return (

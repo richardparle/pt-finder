@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "./src/screens/LoginScreen";
@@ -31,18 +31,73 @@ export default function App() {
           <Stack.Screen
             name="RegisterScreen"
             component={RegisterScreen}
-            options={{ title: "Register" }}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
-            options={{ headerShown: false }}
             name="Dashboard"
             component={Dashboard}
+            options={{
+              title: "Dashboard",
+              headerStyle: {
+                backgroundColor: "#F0CF29",
+              },
+              headerTitleStyle: {
+                fontWeight: "bold",
+              },
+            }}
           />
-          <Stack.Screen name="ClientProfile" component={ClientProfilePage} />
-          <Stack.Screen name="SearchGyms" component={SearchGymsPage} />
-          <Stack.Screen name="PTProfilePage" component={PTProfilePage} />
-          <Stack.Screen name="WeightTracker" component={WeightTrackerScreen} />
-          <Stack.Screen name="ClientMatch" component={ClientMatch} />
+          <Stack.Screen
+            name="ClientProfile"
+            component={ClientProfilePage}
+            options={{
+              title: "Find a PT",
+              headerStyle: {
+                backgroundColor: "#F0CF29",
+              },
+              headerTitleStyle: {
+                fontWeight: "bold",
+              },
+            }}
+          />
+          <Stack.Screen
+            name="PTProfilePage"
+            component={PTProfilePage}
+            options={{
+              title: "Find a PT",
+              headerStyle: {
+                backgroundColor: "#F0CF29",
+              },
+              headerTitleStyle: {
+                fontWeight: "bold",
+              },
+            }}
+          />
+          <Stack.Screen
+            name="WeightTracker"
+            component={WeightTrackerScreen}
+            options={{
+              title: "Find a PT",
+              headerStyle: {
+                backgroundColor: "#F0CF29",
+              },
+              headerTitleStyle: {
+                fontWeight: "bold",
+              },
+            }}
+          />
+          <Stack.Screen
+            name="ClientMatch"
+            component={ClientMatch}
+            options={{
+              title: "Find a PT",
+              headerStyle: {
+                backgroundColor: "#F0CF29",
+              },
+              headerTitleStyle: {
+                fontWeight: "bold",
+              },
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </UserContext.Provider>
@@ -57,3 +112,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+const options = {
+  headerStyle: {
+    backgroundColor: "#F0CF29",
+  },
+  headerTitleStyle: {
+    fontWeight: "bold",
+  },
+};
