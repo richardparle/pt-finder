@@ -3,7 +3,9 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   text: {
     fontFamily: "sans-serif",
+    fontSize: 15,
   },
+
   container: {
     flex: 1,
     justifyContent: "center",
@@ -12,7 +14,12 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
 
-  inputContainer: { width: "80%" },
+  inputContainer: {
+    width: "80%",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 
   input: {
     backgroundColor: "white",
@@ -20,7 +27,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 5,
-    width: 200
+    width: 200,
   },
 
   buttonContainer: {
@@ -52,11 +59,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: "sans-serif",
   },
-  buttonOutlineText: { color: "white", fontWeight: "700", fontSize: 16 },
-
-  label: {
-    margin: 8,
+  buttonOutlineText: {
+    color: "white",
+    fontWeight: "700",
+    fontSize: 16,
   },
+
   checkboxContainer: {
     flexDirection: "row",
     marginBottom: 20,

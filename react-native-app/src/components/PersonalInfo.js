@@ -13,9 +13,8 @@ const PersonalInfo = () => {
 
   return (
     // <View style={styles.container}>
-    <View>
+    <View style={styles.text}>
       <h1>Profile Details</h1>
-
       <Text style={styles.textTitle}>Personal Info:</Text>
       <Text style={styles.text}>
         <At />
@@ -55,6 +54,7 @@ const styles = StyleSheet.create({
     marginRight: 20,
     borderRadius: 10,
     marginTop: 5,
+    fontFamily: "sans-serif",
   },
   // { color: "white", fontWeight: "700", fontSize: 16 },
   textTitle: {
