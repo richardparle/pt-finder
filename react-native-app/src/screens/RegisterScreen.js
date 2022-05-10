@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   CheckBox,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { db } from "../firebase";
@@ -20,6 +20,8 @@ const RegisterScreen = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [location, setLocation] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [profilePicURL, setProfilePicURL] = useState("");
+  const [exerciseGoals, setExerciseGoals] = useState([]);
   const [isPersonalTrainer, setIsPersonalTrainer] = useState(false);
 
   const handleSignup = async () => {
@@ -31,7 +33,15 @@ const RegisterScreen = ({ navigation }) => {
           location,
           username,
           phoneNumber,
+          profilePicURL,
         });
+        const UserExerciseGoals = await addDoc(
+          collection(db, "userExerciseGoals"),
+          {
+            email,
+            exerciseGoals,
+          }
+        );
         alert("Registration complete");
         navigation.navigate("Dashboard");
       } else {
@@ -40,6 +50,7 @@ const RegisterScreen = ({ navigation }) => {
           location,
           username,
           phoneNumber,
+          profilePicURL,
         });
         // add PT Dashboard
         navigation.navigate("PTProfilePage");
@@ -58,11 +69,6 @@ const RegisterScreen = ({ navigation }) => {
           value={username}
           onChangeText={(text) => setUsername(text)}
           style={styles.input}
-          pattern={[
-            "^.{8,}$", // min 8 chars
-            "(?=.*\\d)", // number required
-            "(?=.*[A-Z])", // uppercase letter
-          ]}
         />
         <TextInput
           placeholder="Email"
@@ -88,6 +94,12 @@ const RegisterScreen = ({ navigation }) => {
           onChangeText={(text) => setPassword(text)}
           style={styles.input}
           secureTextEntry={true}
+        />
+        <TextInput
+          placeholder="ProfilePic"
+          value={profilePicURL}
+          onChangeText={(text) => setProfilePicURL(text)}
+          style={styles.input}
         />
         <View style={styles.checkboxContainer}>
           <Text style={styles.label}>Are you a personal trainer?</Text>
