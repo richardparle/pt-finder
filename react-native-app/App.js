@@ -28,7 +28,11 @@ export default function App() {
             component={LoginScreen}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{title: 'Register'}}/>
+          <Stack.Screen
+            name="RegisterScreen"
+            component={RegisterScreen}
+            options={{ title: "Register" }}
+          />
           <Stack.Screen
             options={{ headerShown: false }}
             name="Dashboard"
@@ -39,7 +43,6 @@ export default function App() {
           <Stack.Screen name="PTProfilePage" component={PTProfilePage} />
           <Stack.Screen name="WeightTracker" component={WeightTrackerScreen} />
           <Stack.Screen name="ClientMatch" component={ClientMatch} />
-
         </Stack.Navigator>
       </NavigationContainer>
     </UserContext.Provider>
