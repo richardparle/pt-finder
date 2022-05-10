@@ -1,6 +1,6 @@
 import { signOut } from "firebase/auth";
 import { TouchableOpacity, Text, View } from "react-native";
-import { styles } from "../screens/LoginScreen";
+import { styles } from "../styles/styles";
 import { auth } from "../firebase";
 import { useNavigation } from "@react-navigation/core";
 

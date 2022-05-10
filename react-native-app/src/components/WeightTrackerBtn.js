@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/core";
 import { TouchableOpacity, Text } from "react-native";
-import { styles } from "../screens/LoginScreen";
+import { styles } from "../styles/styles";
 
 const WeightTrackerBtn = () => {
   const navigation = useNavigation();

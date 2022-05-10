@@ -7,7 +7,7 @@ import {
   Image,
   View,
 } from "react-native";
-import { styles } from "./LoginScreen";
+import { styles } from "../styles/styles";
 import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
