@@ -1,15 +1,16 @@
 import {
-  StyleSheet,
   View,
   KeyboardAvoidingView,
   Text,
   TextInput,
   TouchableOpacity,
+  Image,
 } from "react-native";
 import React, { useState, useEffect, useContext } from "react";
 import { auth } from "../firebase";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { UserContext } from "../UserContext";
+import { styles } from "../styles/styles";
 
 const LoginScreen = ({ navigation }) => {
   const { user, setUser } = useContext(UserContext);
@@ -43,7 +44,16 @@ const LoginScreen = ({ navigation }) => {
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <View style={styles.inputContainer}>
-        {/* <Image source={require("../images/app-logo.png")} /> */}
+        <Image
+          style={{
+            width: 250,
+            height: 250,
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginBottom: 50,
+          }}
+          source={require("../images/app-logo.png")}
+        />
         <TextInput
           placeholder="Email"
           value={email}
@@ -76,39 +86,4 @@ const LoginScreen = ({ navigation }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
-  inputContainer: { width: "80%" },
-  input: {
-    backgroundColor: "white",
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    borderRadius: 10,
-    marginTop: 5,
-  },
-  buttonContainer: {
-    width: "60%",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 40,
-  },
-  button: {
-    backgroundColor: "#F0CF29",
-    width: "100%",
-    padding: 15,
-    borderRadius: 10,
-    alignItems: "center",
-    marginTop: 5,
-  },
-  buttonOutline: {
-    backgroundColor: "white",
-    marginTop: 5,
-    borderColor: "#0782F9",
-    borderWidth: 2,
-  },
-  buttonText: { color: "black", fontWeight: "700", fontSize: 16 },
-  buttonOutlineText: { color: "white", fontWeight: "700", fontSize: 16 },
-});
-
 export default LoginScreen;
-export { styles };

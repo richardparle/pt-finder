@@ -85,6 +85,9 @@ const ExerciseGoals = () => {
 };
 
 const styles = StyleSheet.create({
+  text: {
+    fontFamily: "sans-serif",
+  },
   input: {
     backgroundColor: "white",
     paddingHorizontal: 15,

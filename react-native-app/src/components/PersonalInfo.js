@@ -12,12 +12,7 @@ const PersonalInfo = () => {
   const { user, setUser } = useContext(UserContext);
 
   return (
-    // <View style={styles.container}>
     <View>
-      {/* <Text style={{ fontSize: 32, color: "black", marginTop: 20 }}>
-        Profile Details:
-      </Text> */}
-
       <Text style={styles.textTitle}>Personal Info:</Text>
       <Text style={styles.text}>
         <At />
@@ -57,6 +52,7 @@ const styles = StyleSheet.create({
     marginRight: 20,
     borderRadius: 10,
     marginTop: 5,
+    fontFamily: "sans-serif",
   },
   // { color: "white", fontWeight: "700", fontSize: 16 },
   textTitle: {
