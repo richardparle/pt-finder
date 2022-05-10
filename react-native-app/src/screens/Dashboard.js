@@ -8,7 +8,7 @@ import { UserContext } from "../UserContext";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import { View, Text } from "react-native";
-import { styles } from "./LoginScreen";
+import { styles } from "../styles/styles";
 
 const Dashboard = () => {
   const { user, setUser } = useContext(UserContext);

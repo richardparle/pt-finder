@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/core";
 import { TouchableOpacity, Text, View } from "react-native";
-import { styles } from "../screens/LoginScreen";
+import { styles } from "../styles/styles";
 
 const ProfileDetailsBtn = () => {
   const navigation = useNavigation();
