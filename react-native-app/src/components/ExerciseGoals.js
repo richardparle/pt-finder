@@ -54,8 +54,7 @@ const ExerciseGoals = () => {
 
   return (
     <>
-      <h2>Exercise Goals</h2>
-      <h3>Create an exercise goal:</h3>
+      <Text style={styles.textTitle}>Exercise Goals</Text>
       <View>
         <TextInput
           placeholder="Add New Exercise Goal"
@@ -71,7 +70,7 @@ const ExerciseGoals = () => {
           <Text style={styles.buttonOutlineText}>Save New Goal</Text>
         </TouchableOpacity>
       </View>
-      <h3>Exercise goals:</h3>
+      <Text style={styles.textSubTitle}>Your Goals</Text>
       <View>
         {exerciseGoals.map((goal, ind) => {
           return (
@@ -101,13 +100,13 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 5,
-    marginLeft: 20,
-    marginRight: 20,
+    marginLeft: 40,
+    marginRight: 40,
   },
   button: {
     backgroundColor: "#F0CF29",
-    width: "30%",
-    padding: 15,
+    width: "25%",
+    padding: 6,
     borderRadius: 10,
     alignItems: "center",
     marginTop: 5,
@@ -123,8 +122,39 @@ const styles = StyleSheet.create({
   },
   buttonOutlineText: {
     color: "black",
+    fontWeight: "600",
+    fontSize: 14,
+  },
+  textTitle: {
     fontWeight: "700",
     fontSize: 16,
+    backgroundColor: "#F0CF29",
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    borderRadius: 10,
+    marginTop: 50,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  textSubTitle: {
+    fontWeight: "700",
+    fontSize: 16,
+    backgroundColor: "#F0CF29",
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    borderRadius: 10,
+    marginTop: 25,
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  text: {
+    backgroundColor: "#F0CF29",
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    marginLeft: 20,
+    marginRight: 20,
+    borderRadius: 10,
+    marginTop: 5,
   },
   // container: { flex: 1, justifyContent: "center", alignItems: "center" },
   // inputContainer: { width: "80%" },
@@ -147,4 +177,5 @@ const styles = StyleSheet.create({
   //   margin: 8,
   // },
 });
+
 export default ExerciseGoals;

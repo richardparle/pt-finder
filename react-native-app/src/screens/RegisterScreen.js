@@ -41,6 +41,13 @@ const RegisterScreen = ({ navigation }) => {
             exerciseGoals,
           }
         );
+        const UserWeightTracker = await addDoc(
+          collection(db, "userWeightTracker"),
+          {
+            email,
+            weightTracker: [],
+          }
+        );
         alert("Registration complete");
         navigation.navigate("Dashboard");
       } else {
