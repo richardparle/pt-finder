@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 5,
-    width: 200,
+    width: 250,
+    borderWidth: "1.5px",
   },
 
   buttonContainer: {
@@ -44,6 +45,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     marginTop: 5,
+    borderWidth: "2.5px",
   },
 
   buttonOutline: {

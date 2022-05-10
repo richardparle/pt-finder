@@ -5,7 +5,7 @@ import { styles } from "../styles/styles";
 const PTDashboardBtn = () => {
   const navigation = useNavigation();
   const navToPTPage = () => {
-    navigation.replace("PTProfilePage");
+    navigation.navigate("PTProfilePage");
   };
 
   return (

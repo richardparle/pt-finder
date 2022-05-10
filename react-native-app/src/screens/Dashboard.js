@@ -9,6 +9,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import { View, Text } from "react-native";
 import { styles } from "../styles/styles";
+import Header from "../components/Header";
 
 const Dashboard = () => {
   const { user, setUser } = useContext(UserContext);
@@ -32,16 +33,19 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <h1>{user.username}'s Dashboard</h1>
-      <p>
-        Here you can view your profile details, log weight for the day and find
-        a personal trainer near you!
-      </p>
-      <ProfileDetailsBtn />
-      <ClientMatchBtn />
-      <LogOutBtn />
-    </View>
+    <>
+      <Header />
+      <View style={styles.container}>
+        <h1>{user.username}'s Dashboard</h1>
+        <p>
+          Here you can view your profile details, log weight for the day and
+          find a personal trainer near you!
+        </p>
+        <ProfileDetailsBtn />
+        <ClientMatchBtn />
+        <LogOutBtn />
+      </View>
+    </>
   );
 };
 

@@ -32,7 +32,7 @@ const LoginScreen = ({ navigation }) => {
     const unsubscribe = auth.onAuthStateChanged((currUser) => {
       if (currUser) {
         setUser(currUser);
-        navigation.navigate("Dashboard");
+        navigation.replace("Dashboard");
       }
       setIsLoading(false);
     });
@@ -51,6 +51,8 @@ const LoginScreen = ({ navigation }) => {
             marginLeft: "auto",
             marginRight: "auto",
             marginBottom: 50,
+            borderWidth: "2.5px",
+            borderRadius: "8px",
           }}
           source={require("../images/app-logo.png")}
         />
@@ -66,21 +68,20 @@ const LoginScreen = ({ navigation }) => {
           onChangeText={(text) => setPassword(text)}
           style={styles.input}
         />
-      </View>
-      <h3>User Logged in: {user?.email}</h3>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={handleLogin} style={styles.button}>
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity onPress={handleLogin} style={styles.button}>
+            <Text style={styles.buttonText}>Login</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("RegisterScreen");
-          }}
-          style={styles.button}
-        >
-          <Text style={styles.buttonText}>Register</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("RegisterScreen");
+            }}
+            style={styles.button}
+          >
+            <Text style={styles.buttonText}>Register</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </KeyboardAvoidingView>
   );

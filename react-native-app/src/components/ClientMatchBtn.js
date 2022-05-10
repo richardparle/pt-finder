@@ -5,7 +5,7 @@ import { styles } from "../styles/styles";
 const ClientMatchBtn = () => {
   const navigation = useNavigation();
   const navToClientMatch = () => {
-    navigation.replace("ClientMatch");
+    navigation.navigate("ClientMatch");
   };
 
   return (
