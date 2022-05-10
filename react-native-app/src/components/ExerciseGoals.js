@@ -1,15 +1,12 @@
-import { addDoc, collection, doc, getDocs, setDoc } from "firebase/firestore";
+import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { useEffect, useState, useContext } from "react";
-import { Bluetooth, CurrencyEuro } from "react-bootstrap-icons";
 import {
   StyleSheet,
   View,
-  KeyboardAvoidingView,
   Text,
   TextInput,
   TouchableOpacity,
-  CheckBox,
 } from "react-native";
 
 import { UserContext } from "../UserContext";
@@ -19,33 +16,39 @@ const ExerciseGoals = () => {
   const [currentGoalentry, setCurrentGoalentry] = useState("");
   const { user, setUser } = useContext(UserContext);
 
-  console.log("USER IN GOALS", user);
+  //
+
   useEffect(() => {
-    return "Nothing yet";
+    const colRef = collection(db, "userExerciseGoals");
+    getDocs(colRef).then((snapshot) => {
+      snapshot.docs.forEach((document) => {
+        if (document.data().email === user.email) {
+          setExerciseGoals(document.data().exerciseGoals);
+        }
+      });
+    });
   }, []);
+
+  useEffect(() => {
+    const colRef = collection(db, "userExerciseGoals");
+    getDocs(colRef).then((snapshot) => {
+      snapshot.docs.forEach((document) => {
+        if (document.data().email === user.email) {
+          setDoc(doc(db, "userExerciseGoals", document.id), {
+            email: user.email,
+            exerciseGoals: exerciseGoals,
+          });
+        }
+      });
+    });
+  }, [exerciseGoals]);
 
   const saveGoalClick = () => {
     if (currentGoalentry !== "") {
       setExerciseGoals((currExerciseGoals) => {
         return [...currExerciseGoals, currentGoalentry];
       });
-      // .then((goals) => {
-      console.log("Exer Goals2", exerciseGoals);
       setCurrentGoalentry("");
-      const colRef = collection(db, "userExerciseGoals");
-      getDocs(colRef).then((snapshot) => {
-        snapshot.docs.forEach((document) => {
-          if (document.data().email === user.email) {
-            console.log("DOC ID", document.id);
-            console.log("Exer Goals", exerciseGoals);
-            setDoc(doc(db, "userExerciseGoals", document.id), {
-              email: user.email,
-              exerciseGoals: ["hello"],
-            });
-          }
-        });
-      });
-      // });
     }
   };
 
@@ -63,7 +66,6 @@ const ExerciseGoals = () => {
           style={styles.input}
         />
       </View>
-      {/* <View style={styles.buttonContainer}> */}
       <View>
         <TouchableOpacity onPress={saveGoalClick} style={styles.button}>
           <Text style={styles.buttonOutlineText}>Save New Goal</Text>
@@ -84,8 +86,6 @@ const ExerciseGoals = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
-  inputContainer: { width: "80%" },
   input: {
     backgroundColor: "white",
     paddingHorizontal: 15,
@@ -101,22 +101,9 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 5,
+    marginLeft: 20,
+    marginRight: 20,
   },
-  text: {
-    backgroundColor: "#F0CF29",
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    borderRadius: 10,
-    marginTop: 5,
-  },
-  // buttonContainer: {
-  //   width: "100%",
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  //   marginTop: 5,
-  //   marginLeft: 20,
-  //   marginRight: 20,
-  // },
   button: {
     backgroundColor: "#F0CF29",
     width: "30%",
@@ -126,6 +113,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginLeft: 20,
     marginRight: 20,
+    minWidth: 150,
   },
   buttonOutline: {
     backgroundColor: "white",
@@ -133,21 +121,30 @@ const styles = StyleSheet.create({
     borderColor: "#0782F9",
     borderWidth: 2,
   },
-  buttonText: { color: "black", fontWeight: "700", fontSize: 16 },
   buttonOutlineText: {
     color: "black",
     fontWeight: "700",
     fontSize: 16,
   },
-  checkboxContainer: {
-    flexDirection: "row",
-    marginBottom: 20,
-  },
-  checkbox: {
-    alignSelf: "center",
-  },
-  label: {
-    margin: 8,
-  },
+  // container: { flex: 1, justifyContent: "center", alignItems: "center" },
+  // inputContainer: { width: "80%" },
+  // text: {
+  //   backgroundColor: "#F0CF29",
+  //   paddingHorizontal: 15,
+  //   paddingVertical: 10,
+  //   borderRadius: 10,
+  //   marginTop: 5,
+  // },
+  // buttonText: { color: "black", fontWeight: "700", fontSize: 16 },
+  // checkboxContainer: {
+  //   flexDirection: "row",
+  //   marginBottom: 20,
+  // },
+  // checkbox: {
+  //   alignSelf: "center",
+  // },
+  // label: {
+  //   margin: 8,
+  // },
 });
 export default ExerciseGoals;
