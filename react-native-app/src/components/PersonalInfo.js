@@ -10,6 +10,7 @@ import {
 
 const PersonalInfo = () => {
   const { user, setUser } = useContext(UserContext);
+
   return (
     // <View style={styles.container}>
     <View>

@@ -14,7 +14,6 @@ import { UserContext } from "../UserContext";
 const LoginScreen = ({ navigation }) => {
   const { user, setUser } = useContext(UserContext);
 
-  // const [user, setUser] = useState({});
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -39,15 +38,12 @@ const LoginScreen = ({ navigation }) => {
     return unsubscribe;
   }, []);
 
-  // if (Object.keys(user).length !== 0) {
-  //   navigation.navigate("Dashboard");
-  // }
-
   if (isLoading) return <h1>Loading...</h1>;
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <View style={styles.inputContainer}>
+        {/* <Image source={require("../images/app-logo.png")} /> */}
         <TextInput
           placeholder="Email"
           value={email}
@@ -73,7 +69,7 @@ const LoginScreen = ({ navigation }) => {
           }}
           style={styles.button}
         >
-          <Text style={styles.buttonOutlineText}>Register</Text>
+          <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
@@ -97,7 +93,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   button: {
-    backgroundColor: "#0782F9",
+    backgroundColor: "#F0CF29",
     width: "100%",
     padding: 15,
     borderRadius: 10,
@@ -110,7 +106,7 @@ const styles = StyleSheet.create({
     borderColor: "#0782F9",
     borderWidth: 2,
   },
-  buttonText: { color: "white", fontWeight: "700", fontSize: 16 },
+  buttonText: { color: "black", fontWeight: "700", fontSize: 16 },
   buttonOutlineText: { color: "white", fontWeight: "700", fontSize: 16 },
 });
 

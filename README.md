@@ -6,6 +6,7 @@ cd react-native-app
 npm install
 npm i @react-navigation/native-stack
 npm i @react-navigation/native
+npm i react-bootstrap-icons
 npm start (expo start)
 
 Troubleshooting:
