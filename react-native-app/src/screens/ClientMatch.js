@@ -44,13 +44,18 @@ const ClientMatch = () => {
             }}
             value={text}
           />
-          <ul key="testDataList" style={{ marginTop: "50px" }}>
+          <ul
+            key="testDataList"
+            style={{
+              marginTop: "50px",
+              padding: "10px",
+            }}
+          >
             {localPts.map((user, index) => {
               return (
                 <li
                   style={{
                     listStyleType: "none",
-                    width: "90%",
                   }}
                   key={"testli" + index}
                 >
@@ -78,6 +83,7 @@ const ClientMatch = () => {
                           borderTopRightRadius: 20,
                           margin: "-10px",
                           padding: "5px",
+                          minWidth: "70vw",
                         }}
                       >
                         <Image
