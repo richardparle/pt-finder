@@ -40,8 +40,8 @@ const Dashboard = () => {
 
   return (
     <>
+      <View style={styles.dashContainer}>
       <Header />
-      <View style={styles.container}>
         <h1>{user.username}'s Dashboard</h1>
         <Text style={styles.text}>
           Here you can view your profile details, log weight for the day and
