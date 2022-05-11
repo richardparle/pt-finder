@@ -83,7 +83,7 @@ const ClientMatch = () => {
                           borderTopRightRadius: 20,
                           margin: "-10px",
                           padding: "5px",
-                          minWidth: "70vw",
+                          minWidth: "90vw",
                         }}
                       >
                         <Image
