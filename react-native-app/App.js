@@ -31,7 +31,15 @@ export default function App() {
           <Stack.Screen
             name="RegisterScreen"
             component={RegisterScreen}
-            options={{ headerShown: false }}
+            options={{
+              title: "Register",
+              headerStyle: {
+                backgroundColor: "#F0CF29",
+              },
+              headerTitleStyle: {
+                fontWeight: "bold",
+              },
+            }}
           />
           <Stack.Screen
             name="Dashboard"

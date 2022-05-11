@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 5,
     borderWidth: "2.5px",
+    marginBottom: "7%",
   },
 
   buttonOutline: {
@@ -76,6 +77,15 @@ const styles = StyleSheet.create({
   },
   label: {
     margin: 8,
+  },
+  registerBtn: {
+    marginTop: "50px",
+    backgroundColor: "#F0CF29",
+    width: "100%",
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center",
+    borderWidth: "2.5px",
   },
 });
 
