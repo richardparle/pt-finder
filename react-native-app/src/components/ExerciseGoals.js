@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     marginRight: 40,
   },
   button: {
-    backgroundColor: "#F0CF29",
+    backgroundColor: "#F0CF20",
     width: "25%",
     padding: 6,
     borderRadius: 10,
@@ -177,6 +177,8 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     minWidth: 150,
+    borderWidth: "2.5px",
+    borderRadius: 10,
   },
   buttonOutline: {
     backgroundColor: "white",
@@ -199,6 +201,8 @@ const styles = StyleSheet.create({
     marginTop: 50,
     marginLeft: 10,
     marginRight: 10,
+    borderWidth: "1px",
+    borderRadius: 10,
   },
   textSubTitle: {
     fontWeight: "700",
