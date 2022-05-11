@@ -10,6 +10,7 @@ import { db } from "../firebase";
 import { View, Text } from "react-native";
 import { styles } from "../styles/styles";
 import Header from "../components/Header";
+import Quotes from "../quotes/quotes";
 
 const Dashboard = () => {
   const { user, setUser } = useContext(UserContext);
@@ -32,19 +33,24 @@ const Dashboard = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  const quoteGenerator = () => {
+    let randomId = Math.floor(Math.random() * 10);
+    return Quotes[randomId];
+  };
+
   return (
     <>
       <Header />
       <View style={styles.container}>
-        <br></br>
         <h1>{user.username}'s Dashboard</h1>
-        <p style={{ padding: "20px" }}>
+        <Text style={styles.text}>
           Here you can view your profile details, log weight for the day and
           find a personal trainer near you!
-        </p>
+        </Text>
         <ProfileDetailsBtn />
         <ClientMatchBtn />
         <LogOutBtn />
+        <Text style={styles.quote}>{quoteGenerator()}</Text>
       </View>
     </>
   );
