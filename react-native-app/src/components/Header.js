@@ -5,9 +5,10 @@ const Header = () => {
     <Image
       style={{
         width: "100%",
-        height: "30%",
-        marginTop: 0,
+        height: "190px",
         borderBottomWidth: "3px",
+        resizeMode: "center",
+        backgroundColor: "#F0CF29",
       }}
       source={require("../images/app-logo.png")}
     />

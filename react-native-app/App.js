@@ -44,15 +44,8 @@ export default function App() {
           <Stack.Screen
             name="Dashboard"
             component={Dashboard}
-            options={{
-              title: "Dashboard",
-              headerStyle: {
-                backgroundColor: "#F0CF29",
-              },
-              headerTitleStyle: {
-                fontWeight: "bold",
-              },
-            }}
+            options={{ headerShown: false }}
+    
           />
           <Stack.Screen
             name="ClientProfile"

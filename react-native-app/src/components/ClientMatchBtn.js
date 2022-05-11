@@ -9,7 +9,7 @@ const ClientMatchBtn = () => {
   };
 
   return (
-    <View style={styles.buttonContainer}>
+    <View style={styles.dashButtonContainer}>
       <TouchableOpacity onPress={navToClientMatch} style={styles.button}>
         <Text style={styles.buttonText}>Find a PT</Text>
       </TouchableOpacity>

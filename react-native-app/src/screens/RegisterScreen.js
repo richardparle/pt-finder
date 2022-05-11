@@ -123,7 +123,7 @@ const RegisterScreen = ({ navigation }) => {
             height: 250,
             marginLeft: "auto",
             marginRight: "auto",
-            marginBottom: 50,
+            marginBottom: 10,
             borderWidth: "2.5px",
             borderRadius: "8px",
           }}

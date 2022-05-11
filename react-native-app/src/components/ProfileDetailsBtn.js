@@ -9,7 +9,7 @@ const ProfileDetailsBtn = () => {
   };
 
   return (
-    <View style={styles.buttonContainer}>
+    <View style={styles.dashButtonContainer}>
       <TouchableOpacity
         onPress={navToProfilePage}
         style={styles.button}
