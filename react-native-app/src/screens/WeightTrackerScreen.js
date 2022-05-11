@@ -18,10 +18,11 @@ const currDate = () => {
     x.getMonth().toString().padStart(2, 0) +
     "-" +
     x.getFullYear() +
-    " " +
-    x.getHours().toString().padStart(2, 0) +
-    ":" +
-    x.getMinutes().toString().padStart(2, 0)
+    " "
+    // +
+    //   x.getHours().toString().padStart(2, 0) +
+    //   ":" +
+    //   x.getMinutes().toString().padStart(2, 0)
   );
 };
 
@@ -29,6 +30,7 @@ const WeightTrackerScreen = () => {
   const [weight, setWeight] = useState([]);
   const [text, setText] = useState("");
   const { user, setUser } = useContext(UserContext);
+  const [userError, setUserError] = useState("");
 
   useEffect(() => {
     const colRef = collection(db, "userWeightTracker");
@@ -57,10 +59,17 @@ const WeightTrackerScreen = () => {
   }, [weight]);
 
   const addWeightClick = () => {
-    setWeight((currWeights) => {
-      return [{ weight: text, date: currDate() }, ...currWeights];
-    });
-    setText("");
+    const regexNum = /^(\d*\.)?\d+$/;
+    const isValid = regexNum.test(text);
+    if (isValid) {
+      setWeight((currWeights) => {
+        return [{ weight: text, date: currDate() }, ...currWeights];
+      });
+      setText("");
+      setUserError("");
+    } else {
+      setUserError("Number required");
+    }
   };
 
   return (
@@ -75,6 +84,7 @@ const WeightTrackerScreen = () => {
           }}
           value={text}
         />
+        <Text style={style.errorText}>{userError}</Text>
         <View>
           <TouchableOpacity onPress={addWeightClick} style={style.button}>
             <Text style={style.buttonOutlineText}>Add</Text>
@@ -84,11 +94,14 @@ const WeightTrackerScreen = () => {
           {weight.map((item, ind) => {
             return (
               <Text style={style.weightListItem} key={ind}>
-                {`Weight: ${item.weight}kg                 Date: ${item.date}`}
+                {`Weight: ${item.weight}kg`}
+                <br></br>
+                {`Date: ${item.date}`}
               </Text>
             );
           })}
         </View>
+        <Text style={{ marginTop: 40 }}></Text>
       </View>
     </>
   );
@@ -127,6 +140,12 @@ const style = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     minWidth: 150,
+  },
+  errorText: {
+    color: "red",
+    fontWeight: "600",
+    fontSize: 14,
+    marginLeft: 20,
   },
   buttonOutlineText: {
     color: "black",
