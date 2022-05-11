@@ -206,7 +206,7 @@ const RegisterScreen = ({ navigation }) => {
             style={styles.checkbox}
           />
         </View>
-        <TouchableOpacity onPress={handleSignup} style={styles.button}>
+        <TouchableOpacity onPress={handleSignup} style={styles.registerBtn}>
           <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
       </View>

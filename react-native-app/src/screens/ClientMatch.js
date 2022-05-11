@@ -13,7 +13,6 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 
 const ClientMatch = () => {
-  const [location, setLocation] = useState("");
   const [text, setText] = useState("");
   const [queryData, setQueryData] = useState([]);
 
@@ -28,7 +27,7 @@ const ClientMatch = () => {
   }, []);
 
   const localPts = queryData.filter((pt) => {
-    return pt.city === text;
+    return pt.city.toLowerCase() === text.toLowerCase();
   });
 
   return (
@@ -83,7 +82,7 @@ const ClientMatch = () => {
                           borderTopRightRadius: 20,
                           margin: "-10px",
                           padding: "5px",
-                          minWidth: "70vw",
+                          minWidth: "90vw",
                         }}
                       >
                         <Image

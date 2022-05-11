@@ -4,6 +4,8 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: "sans-serif",
     fontSize: 15,
+    paddingLeft: "20px",
+    paddingRight: "20px",
   },
 
   container: {
@@ -46,6 +48,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 5,
     borderWidth: "2.5px",
+    marginBottom: "7%",
   },
 
   buttonOutline: {
@@ -76,6 +79,23 @@ const styles = StyleSheet.create({
   },
   label: {
     margin: 8,
+  },
+  registerBtn: {
+    marginTop: "50px",
+    backgroundColor: "#F0CF29",
+    width: "100%",
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center",
+    borderWidth: "2.5px",
+  },
+  quote: {
+    fontFamily: "sans-serif",
+    fontSize: 15,
+    paddingLeft: "20px",
+    paddingRight: "20px",
+    fontStyle: "italic",
+    fontWeight: "bold",
   },
 });
 
