@@ -37,7 +37,7 @@ const Dashboard = () => {
       <Header />
       <View style={styles.container}>
         <h1>{user.username}'s Dashboard</h1>
-        <p>
+        <p style={{ padding: "20px" }}>
           Here you can view your profile details, log weight for the day and
           find a personal trainer near you!
         </p>
