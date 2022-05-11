@@ -13,7 +13,7 @@ const LogOutBtn = () => {
   };
 
   return (
-    <View style={styles.buttonContainer}>
+    <View style={styles.dashButtonContainer}>
       <TouchableOpacity onPress={logOut} style={styles.button}>
         <Text style={styles.buttonText}>Log out</Text>
       </TouchableOpacity>

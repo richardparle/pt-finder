@@ -23,6 +23,15 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
 
+  dashButtonContainer: {
+    width: "60%",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "2.5%",
+    paddingTop: '2.5%',
+    paddingBottom: '2.5%'
+  },
+
   inputContainer: {
     width: "80%",
     flex: 1,
@@ -44,7 +53,7 @@ const styles = StyleSheet.create({
     width: "60%",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 40,
+    marginTop: 20,
   },
 
   button: {
@@ -53,7 +62,7 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 10,
     alignItems: "center",
-    marginTop: '5%',
+    marginTop: "5%",
     borderWidth: "2.5px",
     marginBottom: "5%",
   },
@@ -88,9 +97,9 @@ const styles = StyleSheet.create({
     margin: 8,
   },
   registerBtn: {
-    marginTop: "50px",
+    marginTop: "5%",
     backgroundColor: "#F0CF29",
-    width: "100%",
+    width: "60%",
     padding: 15,
     borderRadius: 10,
     alignItems: "center",
@@ -99,11 +108,11 @@ const styles = StyleSheet.create({
   quote: {
     fontFamily: "sans-serif",
     fontSize: 15,
-    marginLeft: "20px",
-    marginRight: "20px",
+    margin: "20px",
     fontStyle: "italic",
     fontWeight: "bold",
-    marginTop: "15%",
+    bottom: "0%",
+    position: "fixed",
   },
 });
 
