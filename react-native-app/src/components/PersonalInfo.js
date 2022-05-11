@@ -13,7 +13,7 @@ const PersonalInfo = () => {
 
   return (
     <View>
-      <Text style={styles.textTitle}>Personal Info:</Text>
+      <Text style={styles.textTitle}>Personal Info</Text>
       <Text style={styles.text}>
         <At />
         {" Username:       " + user.username}
@@ -65,6 +65,8 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginLeft: 10,
     marginRight: 10,
+    borderWidth: "1px",
+    borderRadius: 10,
   },
   buttonContainer: {
     width: "60%",
@@ -79,6 +81,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     marginTop: 5,
+    borderWidth: "2.5px",
   },
   buttonOutline: {
     backgroundColor: "white",
