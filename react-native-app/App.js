@@ -45,39 +45,12 @@ export default function App() {
             name="Dashboard"
             component={Dashboard}
             options={{ headerShown: false }}
-    
           />
           <Stack.Screen
             name="ClientProfile"
             component={ClientProfilePage}
             options={{
-              title: "Find a PT",
-              headerStyle: {
-                backgroundColor: "#F0CF29",
-              },
-              headerTitleStyle: {
-                fontWeight: "bold",
-              },
-            }}
-          />
-          <Stack.Screen
-            name="PTProfilePage"
-            component={PTProfilePage}
-            options={{
-              title: "Find a PT",
-              headerStyle: {
-                backgroundColor: "#F0CF29",
-              },
-              headerTitleStyle: {
-                fontWeight: "bold",
-              },
-            }}
-          />
-          <Stack.Screen
-            name="WeightTracker"
-            component={WeightTrackerScreen}
-            options={{
-              title: "Find a PT",
+              title: "My Profile",
               headerStyle: {
                 backgroundColor: "#F0CF29",
               },
