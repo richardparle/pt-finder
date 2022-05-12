@@ -198,14 +198,6 @@ const RegisterScreen = ({ navigation }) => {
             URL to a .PNG, .JPG or .JPEG file required
           </Text>
         )}
-        <View style={styles.checkboxContainer}>
-          <Text style={styles.label}>Are you a personal trainer?</Text>
-          <CheckBox
-            value={isPersonalTrainer}
-            onValueChange={setIsPersonalTrainer}
-            style={styles.checkbox}
-          />
-        </View>
         <TouchableOpacity onPress={handleSignup} style={styles.registerBtn}>
           <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>

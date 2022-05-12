@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     paddingLeft: "20px",
     paddingRight: "20px",
+    textAlign: "center",
   },
 
   container: {
@@ -28,8 +29,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: "2.5%",
-    paddingTop: '2.5%',
-    paddingBottom: '2.5%'
+    paddingTop: "2.5%",
+    paddingBottom: "2.5%",
   },
 
   inputContainer: {
@@ -113,6 +114,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     bottom: "0%",
     position: "fixed",
+    textAlign: "center",
   },
 });
 
